@@ -56,6 +56,49 @@ namespace FractionExercise
             return new Fraction(numer, denom);
         }
 
+        public static Fraction operator +(Fraction a, Fraction b)
+        {
+            var num = a.Numerator * b.Denominator + b.Numerator * a.Denominator;
+            var denum = a.Denominator + b.Denominator;
+
+            return new Fraction(num, denum);
+        }
+
+
+        public static Fraction operator -(Fraction a)
+        {
+            return new Fraction(-a.Numerator, a.Denominator);
+        }
+
+        public static Fraction operator -(Fraction a,  Fraction b) 
+        {
+            return a + -b;
+        }
+
+        public static Fraction operator *(Fraction a, Fraction b)
+        {
+            var num = a.Numerator * b.Numerator;
+            var denum = a.Denominator * b.Denominator;
+
+            return new Fraction(num, denum);
+        }
+
+        public static Fraction operator /(Fraction a, Fraction b) 
+        {
+            return a * b.Invert();
+        }
+
+        public static bool operator ==(Fraction a, Fraction b)
+        {
+             return a.Equals(b);
+        }
+
+        public static bool operator !=(Fraction a, Fraction b)
+        {
+           return !(a ==b);
+        }
+
+
         public Fraction Negate()
         {
             var a = this;
